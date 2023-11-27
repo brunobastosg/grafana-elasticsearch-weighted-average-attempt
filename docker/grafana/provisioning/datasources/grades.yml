@@ -1,0 +1,21 @@
+apiVersion: 1
+
+datasources:
+- name: ES_Grades
+  type: elasticsearch
+  access: proxy
+  orgId: 1
+  url: http://$ELASTICSEARCH_HOST:$ELASTICSEARCH_PORT
+  database: "grades"
+  basicAuth: true
+  basicAuthUser: $ELASTICSEARCH_GRAFANA_USERNAME
+  isDefault: false
+  jsonData:
+    esVersion: 8.0.0
+    keepCookies: []
+    maxConcurrentShardRequests: 5
+    timeField: "date"
+  secureJsonData:
+    basicAuthPassword: $ELASTICSEARCH_GRAFANA_PASSWORD
+  version: 1
+  editable: true
